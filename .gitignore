@@ -9,6 +9,17 @@ dist/
 .env.*
 
 !.env.template
+!.env.example
 
 # Logs
 npm-debug.log*
+
+# Prisma generated client
+/src/generated/prisma/
+
+# AI editor / agent generated files
+/.claude/
+/.agents/
+/.windsurf/
+
+/skills-lock.json
