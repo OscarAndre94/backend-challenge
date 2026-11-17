@@ -1,11 +1,20 @@
-
 import express from 'express';
 import type { Express } from 'express';
+import { ContentTypeMiddleware } from './middlewares/content-type.middleware.js';
+import { setupSwagger } from './config/swagger.js';
+import router from './routes/index.js';
 
 const app: Express = express();
 
+// Swagger
+setupSwagger(app);
+
 // Middlewares
+app.use(ContentTypeMiddleware.validate);
 app.use(express.json());
+
+//Routes
+app.use(router);
 
 // Ruta inicial
 app.get('/health', (_req, res) => {
