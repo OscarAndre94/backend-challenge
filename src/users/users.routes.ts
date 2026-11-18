@@ -35,7 +35,7 @@ const router = Router();
  *                 type: array
  *                 items:
  *                   type: integer
- *                 example: [1, 25,  Pikachu]
+ *                 example: [1, 25,  150]
  *     responses:
  *       201:
  *         description: User created successfully
@@ -91,10 +91,7 @@ router.get('/', UsersController.findAll);
  *                 type: string
  *               password:
  *                 type: string
- *               pokemonIds:
- *                 type: array
- *                 items:
- *                   type: integer
+ *             
  *     responses:
  *       200:
  *         description: User updated successfully

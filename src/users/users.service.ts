@@ -1,32 +1,26 @@
-import { randomBytes, scrypt } from 'node:crypto';
-import { promisify } from 'node:util';
+import { randomBytes, scrypt } from "node:crypto";
+import { promisify } from "node:util";
 
-import { UsersRepository } from './users.repository.js';
+import { UsersRepository } from "./users.repository.js";
 
 import type {
   CreateUserDto,
   UpdateUserDto,
   UpdateUserPokemonDto,
   UserResponseDto,
-} from './dtos/index.js';
+} from "./dtos/index.js";
 
 const scryptAsync = promisify(scrypt);
 
 export class UsersService {
-  constructor(
-    private readonly usersRepository: UsersRepository
-  ) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
   private async hashPassword(password: string): Promise<string> {
-    const salt = randomBytes(16).toString('hex');
+    const salt = randomBytes(16).toString("hex");
 
-    const derivedKey = (await scryptAsync(
-      password,
-      salt,
-      64
-    )) as Buffer;
+    const derivedKey = (await scryptAsync(password, salt, 64)) as Buffer;
 
-    return `${salt}:${derivedKey.toString('hex')}`;
+    return `${salt}:${derivedKey.toString("hex")}`;
   }
 
   private toUserResponse(user: {
@@ -70,16 +64,15 @@ export class UsersService {
     return this.toUserResponse(user);
   }
 
-  async update(
-    id: number,
-    data: UpdateUserDto
-  ): Promise<UserResponseDto> {
-    const updatedData = { ...data };
+  async update(id: number, data: UpdateUserDto): Promise<UserResponseDto> {
+    const updatedData: UpdateUserDto = {
+      ...(data.username !== undefined && { username: data.username }),
+      ...(data.email !== undefined && { email: data.email }),
+      ...(data.password !== undefined && { password: data.password }),
+    };
 
     if (updatedData.password) {
-      updatedData.password = await this.hashPassword(
-        updatedData.password
-      );
+      updatedData.password = await this.hashPassword(updatedData.password);
     }
 
     const user = await this.usersRepository.update(id, updatedData);
@@ -89,7 +82,7 @@ export class UsersService {
 
   async updatePokemon(
     id: number,
-    data: UpdateUserPokemonDto
+    data: UpdateUserPokemonDto,
   ): Promise<UserResponseDto> {
     const user = await this.usersRepository.updatePokemon(id, data);
 

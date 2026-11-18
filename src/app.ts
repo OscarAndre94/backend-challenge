@@ -3,6 +3,7 @@ import type { Express } from 'express';
 import { ContentTypeMiddleware } from './middlewares/content-type.middleware.js';
 import { setupSwagger } from './config/swagger.js';
 import router from './routes/index.js';
+import { ErrorMiddleware } from './middlewares/error.middleware.js';
 
 const app: Express = express();
 
@@ -15,6 +16,9 @@ app.use(express.json());
 
 //Routes
 app.use(router);
+
+// Error handling
+app.use(ErrorMiddleware.handle);
 
 // Ruta inicial
 app.get('/health', (_req, res) => {
