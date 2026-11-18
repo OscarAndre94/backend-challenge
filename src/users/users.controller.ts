@@ -3,6 +3,7 @@ import type { Request, Response } from 'express';
 
 import { UsersRepository } from './users.repository.js';
 import { UsersService } from './users.service.js';
+import { PokemonClient } from '../clients/pokemon.client.js';
 
 import type {
   CreateUserDto,
@@ -11,7 +12,12 @@ import type {
 } from './dtos/index.js';
 
 const usersRepository = new UsersRepository();
-const usersService = new UsersService(usersRepository);
+const pokemonClient = new PokemonClient();
+
+const usersService = new UsersService(
+  usersRepository,
+  pokemonClient,
+);
 
 export class UsersController {
 
