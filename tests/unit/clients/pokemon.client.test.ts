@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, jest } from '@jest/globals';
 import { PokemonClient } from '../../../src/clients/pokemon.client.js';
 import { pokemonMock } from '../../mocks/pokemon/pokemon.mock.js';
 
+
 describe('PokemonClient - Unit Tests', () => {
   const pokemonClient = new PokemonClient();
 
