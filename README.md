@@ -3,6 +3,7 @@
 
 ## Badges
 [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/TaRuBqwJ6jDAVXV2ZSLfMa/NEjCainR2SaaCB9dbJHCH3/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/TaRuBqwJ6jDAVXV2ZSLfMa/NEjCainR2SaaCB9dbJHCH3/tree/main)
+[![Coverage Status](https://coveralls.io/repos/github/OscarAndre94/backend-challenge/badge.svg)](https://coveralls.io/github/OscarAndre94/backend-challenge)
 
  # Features
   - Create new users with their Pokemon IDs.
