@@ -38,11 +38,18 @@ chmod 711 ./up_test.sh
  ## Techs
  Express: 5.3.0
  Node: 24.17.0
- Prisma: 7.0
+ Prisma: 7.10.1
  PostgreSQL
 
+ ## Decisions made
+ - Clean Architecture: Chosen to separate responsibilities between layers, reduce coupling, and make the application easier to maintain and extend as requirements change in the future.
+ - Express: Chosen as a lightweight and flexible framework for building the REST API without introducing unnecessary complexity.
+ - Prisma: Chosen as the ORM because it provides type-safe database queries, schema management, and straightforward integration with TypeScript and Node.js.
+ - Docker: Chosen to containerize the application and database, making the development and testing environments more consistent and portable across different machines.
+ - Jest / E2E Testing: Jest was chosen as a popular and widely adopted JavaScript testing framework. E2E testing was implemented to validate the application's complete functionality through real HTTP requests, ensuring that each endpoint returns the expected response for different scenarios.
+
  # Routes
- - Local: [http://localhost:3000/api]
+ - Local:[![API Swagger](http://localhost:3000/api)]
 
  # Env vars should defined
  To find a example of the values you can use .env.template
