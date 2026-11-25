@@ -1,6 +1,9 @@
 # Backend-Challenge
  You have to build a microservice that exposes a REST api with table users. The table users should be open to creation, deletion, or update. Every request must only accept this Content-type: application/json.
 
+## Badges
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/TaRuBqwJ6jDAVXV2ZSLfMa/NEjCainR2SaaCB9dbJHCH3/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/TaRuBqwJ6jDAVXV2ZSLfMa/NEjCainR2SaaCB9dbJHCH3/tree/main)
+
  # Features
   - Create new users with their Pokemon IDs.
   - Get all users.
