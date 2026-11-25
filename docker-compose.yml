@@ -1,4 +1,19 @@
 services:
+  api:
+    command: ["npm", "start"]
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env.test
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/backend_challenge?schema=public
+      POKEAPI_URL: https://pokeapi.co/api/v2
+
   postgres:
     image: postgres:17-alpine
     container_name: backend-challenge-db

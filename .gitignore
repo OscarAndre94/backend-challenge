@@ -15,6 +15,9 @@ dist-test/
 # Logs
 npm-debug.log*
 
+#test:coverage
+/coverage
+
 # Prisma generated client
 /src/generated/prisma/
 

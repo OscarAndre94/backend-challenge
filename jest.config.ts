@@ -27,6 +27,20 @@ const config: Config = {
 
   clearMocks: true,
   restoreMocks: true,
+
+  // Coverage configuration
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/generated/**',
+    '!src/server.ts',
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'html'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/tests/mocks/',
+    '/src/generated/',
+  ],
 };
 
 export default config;

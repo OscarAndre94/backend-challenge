@@ -1,5 +1,16 @@
 
 services:
+  api:
+    command: ["npm", "run", "test:e2e"]
+    depends_on:
+      - db-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db-test:5432/backend_challenge_test?schema=public
+      POKEAPI_URL: https://pokeapi.co/api/v2
+
   db-test:
     image: postgres:17-alpine
     container_name: backend-challenge-test-db
