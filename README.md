@@ -48,8 +48,8 @@ chmod 711 ./up_test.sh
  - Docker: Chosen to containerize the application and database, making the development and testing environments more consistent and portable across different machines.
  - Jest / E2E Testing: Jest was chosen as a popular and widely adopted JavaScript testing framework. E2E testing was implemented to validate the application's complete functionality through real HTTP requests, ensuring that each endpoint returns the expected response for different scenarios.
 
- # Routes
- - Local:[![API Swagger](http://localhost:3000/api)]
+ ## Routes
+ - Local: [API Swagger](http://localhost:3000/api)
 
  # Env vars should defined
  To find a example of the values you can use .env.template
