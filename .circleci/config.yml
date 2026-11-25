@@ -1,6 +1,7 @@
 
 version: 2.1
-
+orbs:
+  coveralls: coveralls/coveralls@2.2.6
 jobs:
   build-and-test:
     docker:
@@ -58,6 +59,9 @@ jobs:
       - run:
           name: Run tests with coverage
           command: npm run test:coverage -- --runInBand
+          
+      - coveralls/upload:
+          coverage_files: coverage/lcov.info
 
       - run:
           name: Build application
