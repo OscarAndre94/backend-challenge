@@ -1,8 +1,8 @@
-import { randomBytes, scrypt } from "node:crypto";
-import { promisify } from "node:util";
+import { hashPassword } from "../utils/password.js";
 
 import { UsersRepository } from "./users.repository.js";
 import { PokemonClient } from "../clients/pokemon.client.js";
+
 
 import type {
   CreateUserDto,
@@ -12,21 +12,13 @@ import type {
   UserPokemonResponseDto,
 } from "./dtos/index.js";
 
-const scryptAsync = promisify(scrypt);
+
 
 export class UsersService {
   constructor(
     private readonly usersRepository: UsersRepository,
     private readonly pokemonClient: PokemonClient,
   ) {}
-
-  private async hashPassword(password: string): Promise<string> {
-    const salt = randomBytes(16).toString("hex");
-
-    const derivedKey = (await scryptAsync(password, salt, 64)) as Buffer;
-
-    return `${salt}:${derivedKey.toString("hex")}`;
-  }
 
   private toUserResponse(user: {
     id: number;
@@ -43,7 +35,7 @@ export class UsersService {
   }
 
   async create(data: CreateUserDto): Promise<UserResponseDto> {
-    const password = await this.hashPassword(data.password);
+    const password = await hashPassword(data.password);
 
     const user = await this.usersRepository.create({
       ...data,
@@ -86,8 +78,8 @@ export class UsersService {
     };
 
     if (updatedData.password) {
-      updatedData.password = await this.hashPassword(updatedData.password);
-    }
+  updatedData.password = await hashPassword(updatedData.password);
+}
 
     const user = await this.usersRepository.update(id, updatedData);
 
