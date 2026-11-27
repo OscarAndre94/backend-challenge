@@ -1,6 +1,9 @@
 # Backend-Challenge
  You have to build a microservice that exposes a REST api with table users. The table users should be open to creation, deletion, or update. Every request must only accept this Content-type: application/json.
 
+ ## Deployed App Running on Render
+ - [API Swagger] (https://backend-challenge-gl6o.onrender.com/api/) 
+
 ## Badges
 [![CircleCI](https://dl.circleci.com/status-badge/img/circleci/TaRuBqwJ6jDAVXV2ZSLfMa/NEjCainR2SaaCB9dbJHCH3/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/TaRuBqwJ6jDAVXV2ZSLfMa/NEjCainR2SaaCB9dbJHCH3/tree/main)
 [![Coverage Status](https://coveralls.io/repos/github/OscarAndre94/backend-challenge/badge.svg)](https://coveralls.io/github/OscarAndre94/backend-challenge)
